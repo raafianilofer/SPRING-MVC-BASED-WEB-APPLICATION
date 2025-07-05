@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student List</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        a.button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            margin: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        a.button:hover {
+            background-color: #45a049;
+        }
+
+        .action-btn {
+            margin: 0 5px;
+        }
+
+        .action-btn.delete {
+            background-color: #f44336;
+        }
+
+        .action-btn.edit {
+            background-color: #2196F3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Student List</h2>
+
+    <table>
+        <tr>
+            <th>ID</th><th>Name</th><th>Email</th><th>Actions</th>
+        </tr>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.id}"></td>
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.email}"></td>
+            <td>
+                <a th:href="@{'/students/edit/' + ${student.id}}" class="button action-btn edit">Edit</a>
+                <a th:href="@{'/students/delete/' + ${student.id}}" class="button action-btn delete">Delete</a>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <a th:href="@{/students/add}" class="button">Add Student</a>
+    <a th:href="@{/}" class="button">Back to Home</a>
+
+    
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Home - Student App</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #e3f2fd, #f3e5f5);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            flex: 1;
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        .top-bar {
+            text-align: right;
+            background-color: #e3f2fd;
+            padding: 15px 25px;
+        }
+
+        .top-bar a {
+            color: #007bff;
+            text-decoration: none;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        .logo {
+            width: 180px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #2c3e50;
+            margin: 15px 0 10px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        a.button {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 12px;
+            transition: background-color 0.3s ease;
+        }
+
+        a.button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #1f1f1f;
+            color: #ccc;
+            text-align: center;
+            padding: 12px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🔐 Login/Logout bar -->
+    <div class="top-bar">
+        <span sec:authorize="isAuthenticated()">
+            Logged in as <strong sec:authentication="name"></strong> |
+            <a th:href="@{/logout}">Logout</a>
+        </span>
+        <span sec:authorize="!isAuthenticated()">
+            <a th:href="@{/login}">Login</a>
+        </span>
+    </div>
+
+    <div class="container">
+        <img th:src="@{/images/crescent-logo.jpg}" alt="Crescent University Logo" class="logo">
+
+        <h1>Welcome to the Student Management System</h1>
+        <p>
+            Manage student records efficiently for <strong>Crescent University</strong>.<br>
+            Developed by <strong>Raafia</strong>, B.Tech CSE.
+        </p>
+
+        <a th:href="@{/students}" class="button">📋 View Students</a>
+        <a th:href="@{/students/add}" class="button">➕ Add Student</a>
+    </div>
+
+    <footer>
+        &copy; 2025 Raafia | B.Tech CSE – Crescent University, Chennai
+    </footer>
+
+</body>
+</html>
