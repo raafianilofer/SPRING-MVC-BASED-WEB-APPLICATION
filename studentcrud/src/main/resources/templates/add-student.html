@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Add Student</title>
+    <title>Add/Edit Student</title>
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
@@ -17,11 +17,6 @@
             width: 400px;
             margin: 0 auto;
             box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-        }
-
-        h2 {
-            margin-bottom: 20px;
-            color: #333;
         }
 
         input[type="text"], input[type="email"] {
@@ -42,10 +37,6 @@
             border-radius: 8px;
             margin-top: 15px;
             cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
         }
 
         .nav-links {
@@ -70,7 +61,6 @@
 <div class="form-container">
     <h2 th:text="${student.id != null} ? 'Edit Student' : 'Add New Student'"></h2>
 
-    <!-- ✅ Corrected form action -->
     <form th:action="@{/students/save}" th:object="${student}" method="post">
         <input type="hidden" th:field="*{id}" />
         <div>

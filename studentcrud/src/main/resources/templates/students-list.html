@@ -6,8 +6,11 @@
         body {
             font-family: 'Segoe UI', sans-serif;
             background-color: #f4f4f4;
-            padding: 20px;
+            padding: 18px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         h2 {
@@ -17,7 +20,7 @@
         table {
             margin: 0 auto;
             border-collapse: collapse;
-            width: 80%;
+            width: 60%;
             background-color: white;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -39,10 +42,11 @@
         a.button {
             background-color: #4CAF50;
             color: white;
-            padding: 8px 16px;
+            padding: 10px 20px;
             margin: 10px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 6px;
+            display: inline-block;
         }
 
         a.button:hover {
@@ -60,6 +64,26 @@
         .action-btn.edit {
             background-color: #2196F3;
         }
+        .button.delete {
+    background-color: #e53935;
+}
+.button.delete:hover {
+    background-color: #c62828;
+}
+
+
+        .button-container {
+            margin-top: 30px;
+        }
+
+        footer {
+            background-color: #1f1f1f;
+            color: #ccc;
+            text-align: center;
+            padding: 12px;
+            font-size: 14px;
+            margin-top: auto;
+        }
     </style>
 </head>
 <body>
@@ -68,7 +92,10 @@
 
     <table>
         <tr>
-            <th>ID</th><th>Name</th><th>Email</th><th>Actions</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
         </tr>
         <tr th:each="student : ${students}">
             <td th:text="${student.id}"></td>
@@ -81,10 +108,17 @@
         </tr>
     </table>
 
-    <br>
-    <a th:href="@{/students/add}" class="button">Add Student</a>
-    <a th:href="@{/}" class="button">Back to Home</a>
+    <!-- Buttons below the table -->
+    <div class="button-container">
+        <a th:href="@{/students/add}" class="button">➕ Add Student</a>
+        <a th:href="@{/}" class="button">🏠 Home</a>
+        <a th:href="@{/students/delete-all}" class="button delete">Delete All Students</a>
+    </div>
 
-    
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 Raafia | B.Tech CSE – Crescent University, Chennai
+    </footer>
+
 </body>
 </html>
