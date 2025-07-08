@@ -1,6 +1,6 @@
 package com.raafia.studentcrud.controller;
-
-import com.raafia.studentcrud.model.Student;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;import com.raafia.studentcrud.model.Student;
 import com.raafia.studentcrud.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,4 +51,7 @@ public class StudentController {
         studentRepository.deleteById(id);
         return "redirect:/students";
     }
+
+  
+
 }

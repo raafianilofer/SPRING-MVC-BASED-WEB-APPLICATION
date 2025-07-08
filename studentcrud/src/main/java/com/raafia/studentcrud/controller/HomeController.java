@@ -8,6 +8,12 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
+        System.out.println("Inside home navigation .");
         return "index"; // renders templates/index.html
+    }
+
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login";
     }
 }
